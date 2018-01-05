@@ -1,0 +1,3593 @@
+{
+    "package": "GameDatabase",
+    "tagline": "GameDatabase API",
+    "description": "IGDB.com is a video game community website, intended for both game consumers and video game professionals alike.",
+    "image": "https:\/\/logo.clearbit.com\/igdb.github.io",
+    "repo": "https:\/\/github.com\/RapidSoftwareSolutions\/Marketplace-GameDatabase-Package",
+    "keywords": [
+        "API",
+        "game",
+        "gamers",
+        "characters",
+        "igdb"
+    ],
+    "accounts": {
+        "domain": "igdb.github.io",
+        "credentials": [
+            "userKey",
+            "requestUrl"
+        ]
+    },
+    "steps": [
+        "Browse to https:\/\/igdb.github.io\/api",
+        "Register or log in",
+        "Browse to https:\/\/api.igdb.com\/admin to get your userKey and requestUrl"
+    ],
+    "blocks": [
+        {
+            "name": "listCharacters",
+            "description": "Get list of characters",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "Number",
+                    "info": "Number of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "Number",
+                    "info": "Offset of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "order",
+                    "type": "String",
+                    "info": "Sort order",
+                    "required": false
+                },
+                {
+                    "name": "search",
+                    "type": "String",
+                    "info": "String to search",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/characters\/",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields",
+                            "limit",
+                            "offset",
+                            "order",
+                            "search"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getCharacters",
+            "description": "Get characters information",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "characterIds",
+                    "type": "List",
+                    "structure": {
+                        "name": "characterId",
+                        "type": "String",
+                        "info": "Single characterId"
+                    },
+                    "info": "Id of the character",
+                    "required": true,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/characters\/{$data['characterIds']}",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "listCollections",
+            "description": "Get list of collections",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "Number",
+                    "info": "Number of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "Number",
+                    "info": "Offset of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "order",
+                    "type": "String",
+                    "info": "Sort order",
+                    "required": false
+                },
+                {
+                    "name": "search",
+                    "type": "String",
+                    "info": "String to search",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/collections\/",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields",
+                            "limit",
+                            "offset",
+                            "order",
+                            "search"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getCollections",
+            "description": "Get collections information",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "collectionIds",
+                  "type": "List",
+                    "structure": {
+                        "name": "collectionId",
+                        "type": "String",
+                        "info": "Single collectionId"
+                    },
+                    "info": "Id of the collection",
+                    "required": true,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/collections\/{$data['collectionIds']}",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "listCompanies",
+            "description": "Get list of companies",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "Number",
+                    "info": "Number of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "Number",
+                    "info": "Offset of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "order",
+                    "type": "String",
+                    "info": "Sort order",
+                    "required": false
+                },
+                {
+                    "name": "search",
+                    "type": "String",
+                    "info": "String to search",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/companies\/",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields",
+                            "limit",
+                            "offset",
+                            "order",
+                            "search"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getCompanies",
+            "description": "Get companies information",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "companyIds",
+                  "type": "List",
+                    "structure": {
+                        "name": "companyId",
+                        "type": "String",
+                        "info": "Single companyId"
+                    },
+                    "info": "Id of the companies",
+                    "required": true,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/companies\/{$data['companyIds']}",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "listCredits",
+            "description": "Get list of employees responsible for working on the game.",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "Number",
+                    "info": "Number of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "Number",
+                    "info": "Offset of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "order",
+                    "type": "String",
+                    "info": "Sort order",
+                    "required": false
+                },
+                {
+                    "name": "search",
+                    "type": "String",
+                    "info": "String to search",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/credits\/",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields",
+                            "limit",
+                            "offset",
+                            "order",
+                            "search"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getCredits",
+            "description": "Get employees responsible for working on the game.",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "creditsIds",
+                  "type": "List",
+                    "structure": {
+                        "name": "creditsId",
+                        "type": "String",
+                        "info": "Single creditsId"
+                    },
+                    "info": "Id of the credit",
+                    "required": true,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/credits\/{$data['creditsIds']}",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "listFeeds",
+            "description": "Get list of social feed of status updates, media and news articles.",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "Number",
+                    "info": "Number of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "Number",
+                    "info": "Offset of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "order",
+                    "type": "String",
+                    "info": "Sort order",
+                    "required": false
+                },
+                {
+                    "name": "search",
+                    "type": "String",
+                    "info": "String to search",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/feeds\/",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields",
+                            "limit",
+                            "offset",
+                            "order",
+                            "search"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getFeeds",
+            "description": "Get social feed of status updates, media and news articles.",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "feedIds",
+                  "type": "List",
+                    "structure": {
+                        "name": "feedId",
+                        "type": "String",
+                        "info": "Single feedId"
+                    },
+                    "info": "Id of the feed",
+                    "required": true,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/feeds\/{$data['feedIds']}",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "listFranchises",
+            "description": "Get list video game franchises such as Star Wars.",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "Number",
+                    "info": "Number of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "Number",
+                    "info": "Offset of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "order",
+                    "type": "String",
+                    "info": "Sort order",
+                    "required": false
+                },
+                {
+                    "name": "search",
+                    "type": "String",
+                    "info": "String to search",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/franchises\/",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields",
+                            "limit",
+                            "offset",
+                            "order",
+                            "search"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getFranchises",
+            "description": "Get video game franchises such as Star Wars.",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "franchiseIds",
+                  "type": "List",
+                    "structure": {
+                        "name": "franchiseId",
+                        "type": "String",
+                        "info": "Single franchiseId"
+                    },
+                    "info": "Id of the franchise",
+                    "required": true,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/franchises\/{$data['franchiseIds']}",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "listGames",
+            "description": "Get list of Video Games!",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "Number",
+                    "info": "Number of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "Number",
+                    "info": "Offset of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "order",
+                    "type": "String",
+                    "info": "Sort order",
+                    "required": false
+                },
+                {
+                    "name": "search",
+                    "type": "String",
+                    "info": "String to search",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/games\/",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields",
+                            "limit",
+                            "offset",
+                            "order",
+                            "search"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getGames",
+            "description": "Get Video Games!",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "gameIds",
+                  "type": "List",
+                    "structure": {
+                        "name": "gameId",
+                        "type": "String",
+                        "info": "Single gameId"
+                    },
+                    "info": "Id of the game",
+                    "required": true,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/games\/{$data['gameIds']}",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "listGameEngines",
+            "description": "Get list of game engines such as unreal engine.",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "Number",
+                    "info": "Number of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "Number",
+                    "info": "Offset of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "order",
+                    "type": "String",
+                    "info": "Sort order",
+                    "required": false
+                },
+                {
+                    "name": "search",
+                    "type": "String",
+                    "info": "String to search",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/game_engines\/",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields",
+                            "limit",
+                            "offset",
+                            "order",
+                            "search"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getGameEngines",
+            "description": "Get game engines such as unreal engine.",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "gameEngineIds",
+                  "type": "List",
+                    "structure": {
+                        "name": "gameEngineId",
+                        "type": "String",
+                        "info": "Single gameEngineId"
+                    },
+                    "info": "Id of the game engine",
+                    "required": true,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/game_engines\/{$data['gameEngineIds']}",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "listGameModes",
+            "description": "Get list of game modes",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "Number",
+                    "info": "Number of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "Number",
+                    "info": "Offset of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "order",
+                    "type": "String",
+                    "info": "Sort order",
+                    "required": false
+                },
+                {
+                    "name": "search",
+                    "type": "String",
+                    "info": "String to search",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/game_modes\/",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields",
+                            "limit",
+                            "offset",
+                            "order",
+                            "search"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getGameModes",
+            "description": "Get game modes",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "gameModeIds",
+                  "type": "List",
+                    "structure": {
+                        "name": "gameModeId",
+                        "type": "String",
+                        "info": "Single gameModeId"
+                    },
+                    "info": "Id of the game mode",
+                    "required": true,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/game_mode\/{$data['gameModeIds']}",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "listGenres",
+            "description": "Get list of game genres",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "Number",
+                    "info": "Number of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "Number",
+                    "info": "Offset of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "order",
+                    "type": "String",
+                    "info": "Sort order",
+                    "required": false
+                },
+                {
+                    "name": "search",
+                    "type": "String",
+                    "info": "String to search",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/genres\/",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields",
+                            "limit",
+                            "offset",
+                            "order",
+                            "search"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getGenres",
+            "description": "Get game genres",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "genreIds",
+                  "type": "List",
+                    "structure": {
+                        "name": "genreId",
+                        "type": "String",
+                        "info": "Single genreId"
+                    },
+                    "info": "Id of the genre",
+                    "required": true,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/genres\/{$data['genreIds']}",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "listKeywords",
+            "description": "Get list of words or phrases that get tagged to a game such as \u201cworld war 2\u201d or \u201csteampunk\u201d.",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "Number",
+                    "info": "Number of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "Number",
+                    "info": "Offset of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "order",
+                    "type": "String",
+                    "info": "Sort order",
+                    "required": false
+                },
+                {
+                    "name": "search",
+                    "type": "String",
+                    "info": "String to search",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/keywords\/",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields",
+                            "limit",
+                            "offset",
+                            "order",
+                            "search"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getKeywords",
+            "description": "Get words or phrases that get tagged to a game such as \u201cworld war 2\u201d or \u201csteampunk\u201d.",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "keywordIds",
+                  "type": "List",
+                    "structure": {
+                        "name": "keywordId",
+                        "type": "String",
+                        "info": "Single keywordId"
+                    },
+                    "info": "Id of the keyword",
+                    "required": true,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/keywords\/{$data['keywordIds']}",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "listPages",
+            "description": "Get list of multipurpose pages currently used for youtubers and media organisations.",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "Number",
+                    "info": "Number of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "Number",
+                    "info": "Offset of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "order",
+                    "type": "String",
+                    "info": "Sort order",
+                    "required": false
+                },
+                {
+                    "name": "search",
+                    "type": "String",
+                    "info": "String to search",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/pages\/",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields",
+                            "limit",
+                            "offset",
+                            "order",
+                            "search"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getPages",
+            "description": "Get pages currently used for youtubers and media organisations.",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "pageIds",
+                  "type": "List",
+                    "structure": {
+                        "name": "pageId",
+                        "type": "String",
+                        "info": "Single pageId"
+                    },
+                    "info": "Id of the page",
+                    "required": true,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/pages\/{$data['pageIds']}",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "listPersons",
+            "description": "Get list of individuals who are in the video games industry",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "Number",
+                    "info": "Number of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "Number",
+                    "info": "Offset of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "order",
+                    "type": "String",
+                    "info": "Sort order",
+                    "required": false
+                },
+                {
+                    "name": "search",
+                    "type": "String",
+                    "info": "String to search",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/people\/",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields",
+                            "limit",
+                            "offset",
+                            "order",
+                            "search"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getPersons",
+            "description": "Get individuals who are in the video games industry",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "personIds",
+                  "type": "List",
+                    "structure": {
+                        "name": "personId",
+                        "type": "String",
+                        "info": "Single personId"
+                    },
+                    "info": "Id of the person",
+                    "required": true,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/people\/{$data['personIds']}",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "listPlatforms",
+            "description": "Get list of hardware used to run the game or game delivery network",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "Number",
+                    "info": "Number of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "Number",
+                    "info": "Offset of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "order",
+                    "type": "String",
+                    "info": "Sort order",
+                    "required": false
+                },
+                {
+                    "name": "search",
+                    "type": "String",
+                    "info": "String to search",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/platforms\/",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields",
+                            "limit",
+                            "offset",
+                            "order",
+                            "search"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getPlatforms",
+            "description": "Get hardware used to run the game or game delivery network",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "platformIds",
+                  "type": "List",
+                    "structure": {
+                        "name": "platformId",
+                        "type": "String",
+                        "info": "Single platformId"
+                    },
+                    "info": "Id of the platform",
+                    "required": true,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/platforms\/{$data['platformIds']}",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "listPlayerPerspective",
+            "description": "Get list player perspectives",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "Number",
+                    "info": "Number of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "Number",
+                    "info": "Offset of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "order",
+                    "type": "String",
+                    "info": "Sort order",
+                    "required": false
+                },
+                {
+                    "name": "search",
+                    "type": "String",
+                    "info": "String to search",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/player_perspectives\/",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields",
+                            "limit",
+                            "offset",
+                            "order",
+                            "search"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getPlayerPerspectives",
+            "description": "Get player perspectives",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "playerPerspectiveIds",
+                  "type": "List",
+                    "structure": {
+                        "name": "playerPerspectiveId",
+                        "type": "String",
+                        "info": "Single playerPerspectiveId"
+                    },
+                    "info": "Id of the player perspective",
+                    "required": true,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/player_perspectives\/{$data['playerPerspectiveIds']}",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "listPulses",
+            "description": "Get list of news article.",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "Number",
+                    "info": "Number of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "Number",
+                    "info": "Offset of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "order",
+                    "type": "String",
+                    "info": "Sort order",
+                    "required": false
+                },
+                {
+                    "name": "search",
+                    "type": "String",
+                    "info": "String to search",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/pulses\/",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields",
+                            "limit",
+                            "offset",
+                            "order",
+                            "search"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getPulses",
+            "description": "Get news article.",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "pulseIds",
+                  "type": "List",
+                    "structure": {
+                        "name": "pulseId",
+                        "type": "String",
+                        "info": "Single pulseId"
+                    },
+                    "info": "Id of the pulses",
+                    "required": true,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/pulses\/{$data['pulseIds']}",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "listPulseGroups",
+            "description": "Get list of news article groups.",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "Number",
+                    "info": "Number of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "Number",
+                    "info": "Offset of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "order",
+                    "type": "String",
+                    "info": "Sort order",
+                    "required": false
+                },
+                {
+                    "name": "search",
+                    "type": "String",
+                    "info": "String to search",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/pulse_groups\/",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields",
+                            "limit",
+                            "offset",
+                            "order",
+                            "search"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getPulseGroups",
+            "description": "Get news article groups.",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "pulseGroupIds",
+                  "type": "List",
+                    "structure": {
+                        "name": "pulseGroupId",
+                        "type": "String",
+                        "info": "Single pulseGroupId"
+                    },
+                    "info": "Id of the pulse groups",
+                    "required": true,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/pulse_groups\/{$data['pulseGroupIds']}",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "listPulseSources",
+            "description": "Get list of news article source such as IGN.",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "Number",
+                    "info": "Number of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "Number",
+                    "info": "Offset of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "order",
+                    "type": "String",
+                    "info": "Sort order",
+                    "required": false
+                },
+                {
+                    "name": "search",
+                    "type": "String",
+                    "info": "String to search",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/pulse_sources\/",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields",
+                            "limit",
+                            "offset",
+                            "order",
+                            "search"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getPulseSources",
+            "description": "Get news article source such as IGN.",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "pulseSourceIds",
+                  "type": "List",
+                    "structure": {
+                        "name": "pulseSourceId",
+                        "type": "String",
+                        "info": "Single pulseSourceId"
+                    },
+                    "info": "Id of the pulse sources",
+                    "required": true,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/pulse_sources\/{$data['pulseSourceIds']}",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "listReleaseDates",
+            "description": "Get list of release dates, platforms and versions.",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "Number",
+                    "info": "Number of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "Number",
+                    "info": "Offset of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "order",
+                    "type": "String",
+                    "info": "Sort order",
+                    "required": false
+                },
+                {
+                    "name": "search",
+                    "type": "String",
+                    "info": "String to search",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/release_dates\/",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields",
+                            "limit",
+                            "offset",
+                            "order",
+                            "search"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getReleaseDates",
+            "description": "Get release dates, platforms and versions.",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "releaseDateIds",
+                  "type": "List",
+                    "structure": {
+                        "name": "releaseDateId",
+                        "type": "String",
+                        "info": "Single releaseDateId"
+                    },
+                    "info": "Id of the release dates",
+                    "required": true,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/release_dates\/{$data['releaseDateIds']}",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "listReviews",
+            "description": "Get list of reviews",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "Number",
+                    "info": "Number of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "Number",
+                    "info": "Offset of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "order",
+                    "type": "String",
+                    "info": "Sort order",
+                    "required": false
+                },
+                {
+                    "name": "search",
+                    "type": "String",
+                    "info": "String to search",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/reviews\/",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields",
+                            "limit",
+                            "offset",
+                            "order",
+                            "search"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getReviews",
+            "description": "Get reviews",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "reviewIds",
+                  "type": "List",
+                    "structure": {
+                        "name": "reviewId",
+                        "type": "String",
+                        "info": "Single reviewId"
+                    },
+                    "info": "Id of the review",
+                    "required": true,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/reviews\/{$data['reviewIds']}",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "listThemes",
+            "description": "Get list of themes",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "Number",
+                    "info": "Number of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "Number",
+                    "info": "Offset of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "order",
+                    "type": "String",
+                    "info": "Sort order",
+                    "required": false
+                },
+                {
+                    "name": "search",
+                    "type": "String",
+                    "info": "String to search",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/themes\/",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields",
+                            "limit",
+                            "offset",
+                            "order",
+                            "search"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getThemes",
+            "description": "Get themes",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "themeIds",
+                  "type": "List",
+                    "structure": {
+                        "name": "themeId",
+                        "type": "String",
+                        "info": "Single themeId"
+                    },
+                    "info": "Id of the themes",
+                    "required": true,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/themes\/{$data['themeIds']}",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "listTitles",
+            "description": "Get list of job titles in the industry.",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "Number",
+                    "info": "Number of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "Number",
+                    "info": "Offset of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "order",
+                    "type": "String",
+                    "info": "Sort order",
+                    "required": false
+                },
+                {
+                    "name": "search",
+                    "type": "String",
+                    "info": "String to search",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/titles\/",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields",
+                            "limit",
+                            "offset",
+                            "order",
+                            "search"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getTitles",
+            "description": "Get job titles in the industry.",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "titleIds",
+                  "type": "List",
+                    "structure": {
+                        "name": "titleId",
+                        "type": "String",
+                        "info": "Single titleId"
+                    },
+                    "info": "Id of the title",
+                    "required": true,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/titles\/{$data['titleIds']}",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "listGameVersions",
+            "description": "Get list of details about game editions and versions.",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "Number",
+                    "info": "Number of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "Number",
+                    "info": "Offset of records to retrieve",
+                    "required": false
+                },
+                {
+                    "name": "order",
+                    "type": "String",
+                    "info": "Sort order",
+                    "required": false
+                },
+                {
+                    "name": "search",
+                    "type": "String",
+                    "info": "String to search",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/game_versions\/",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields",
+                            "limit",
+                            "offset",
+                            "order",
+                            "search"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "getGameVersions",
+            "description": "Get details about game editions and versions.",
+            "args": [
+                {
+                    "name": "requestUrl",
+                    "type": "credentials",
+                    "info": "Your request url",
+                    "required": true
+                },
+                {
+                    "name": "userKey",
+                    "type": "credentials",
+                    "info": "Your user key",
+                    "required": true
+                },
+                {
+                    "name": "gameVersionIds",
+                  "type": "List",
+                    "structure": {
+                        "name": "gameVersionId",
+                        "type": "String",
+                        "info": "Single gameVersionId"
+                    },
+                    "info": "Id of the game version",
+                    "required": true,
+                    "vendorSchema": {
+                        "format": "toString:{,}"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "List",
+                    "structure": {
+                        "name": "field",
+                        "type": "String",
+                        "info": "Single field"
+                    },
+                    "info": "Fields to retrieve; * to return all fields",
+                    "required": false
+                }
+            ],
+            "vendorRequest": {
+                "url": "{$data['requestUrl']}\/game_versions\/{$data['gameVersionIds']}",
+                "method": "get",
+                "requestParameters": [
+                    {
+                        "type": "query",
+                        "parameters": [
+                            "fields"
+                        ]
+                    }
+                ],
+                "headers": {
+                    "user-key": "{$data['userKey']}",
+                    "Accept": "application\/json"
+                }
+            },
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        }
+    ]
+}
