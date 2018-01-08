@@ -24,7 +24,7 @@ $app->post('/api/GameDatabase/getGameModes', function ($request, $response) {
     $data['gameModeIds'] = \Models\Params::toString($data['gameModeIds'], ','); 
 
     $client = $this->httpClient;
-    $query_str = "{$data['requestUrl']}/game_mode/{$data['gameModeIds']}";
+    $query_str = "{$data['requestUrl']}/game_modes/{$data['gameModeIds']}";
 
     
 
