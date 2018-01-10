@@ -12,7 +12,7 @@
         "igdb"
     ],
     "accounts": {
-        "domain": "igdb.github.io",
+        "domain": "https://igdb.github.io",
         "credentials": [
             "userKey",
             "requestUrl"
@@ -139,17 +139,6 @@
                     "vendorSchema": {
                         "format": "toString:{,}"
                     }
-                },
-                {
-                    "name": "fields",
-                    "type": "List",
-                    "structure": {
-                        "name": "field",
-                        "type": "String",
-                        "info": "Single field"
-                    },
-                    "info": "Fields to retrieve; * to return all fields",
-                    "required": false
                 }
             ],
             "vendorRequest": {
@@ -159,7 +148,6 @@
                     {
                         "type": "query",
                         "parameters": [
-                            "fields"
                         ]
                     }
                 ],
@@ -294,17 +282,6 @@
                     "vendorSchema": {
                         "format": "toString:{,}"
                     }
-                },
-                {
-                    "name": "fields",
-                    "type": "List",
-                    "structure": {
-                        "name": "field",
-                        "type": "String",
-                        "info": "Single field"
-                    },
-                    "info": "Fields to retrieve; * to return all fields",
-                    "required": false
                 }
             ],
             "vendorRequest": {
@@ -314,7 +291,6 @@
                     {
                         "type": "query",
                         "parameters": [
-                            "fields"
                         ]
                     }
                 ],
@@ -449,17 +425,6 @@
                     "vendorSchema": {
                         "format": "toString:{,}"
                     }
-                },
-                {
-                    "name": "fields",
-                    "type": "List",
-                    "structure": {
-                        "name": "field",
-                        "type": "String",
-                        "info": "Single field"
-                    },
-                    "info": "Fields to retrieve; * to return all fields",
-                    "required": false
                 }
             ],
             "vendorRequest": {
@@ -469,7 +434,6 @@
                     {
                         "type": "query",
                         "parameters": [
-                            "fields"
                         ]
                     }
                 ],
@@ -604,17 +568,6 @@
                     "vendorSchema": {
                         "format": "toString:{,}"
                     }
-                },
-                {
-                    "name": "fields",
-                    "type": "List",
-                    "structure": {
-                        "name": "field",
-                        "type": "String",
-                        "info": "Single field"
-                    },
-                    "info": "Fields to retrieve; * to return all fields",
-                    "required": false
                 }
             ],
             "vendorRequest": {
@@ -624,7 +577,6 @@
                     {
                         "type": "query",
                         "parameters": [
-                            "fields"
                         ]
                     }
                 ],
@@ -759,17 +711,6 @@
                     "vendorSchema": {
                         "format": "toString:{,}"
                     }
-                },
-                {
-                    "name": "fields",
-                    "type": "List",
-                    "structure": {
-                        "name": "field",
-                        "type": "String",
-                        "info": "Single field"
-                    },
-                    "info": "Fields to retrieve; * to return all fields",
-                    "required": false
                 }
             ],
             "vendorRequest": {
@@ -779,7 +720,6 @@
                     {
                         "type": "query",
                         "parameters": [
-                            "fields"
                         ]
                     }
                 ],
@@ -914,19 +854,7 @@
                     "vendorSchema": {
                         "format": "toString:{,}"
                     }
-                },
-                {
-                    "name": "fields",
-                    "type": "List",
-                    "structure": {
-                        "name": "field",
-                        "type": "String",
-                        "info": "Single field"
-                    },
-                    "info": "Fields to retrieve; * to return all fields",
-                    "required": false
-                }
-            ],
+                }],
             "vendorRequest": {
                 "url": "{$data['requestUrl']}\/franchises\/{$data['franchiseIds']}",
                 "method": "get",
@@ -1069,19 +997,7 @@
                     "vendorSchema": {
                         "format": "toString:{,}"
                     }
-                },
-                {
-                    "name": "fields",
-                    "type": "List",
-                    "structure": {
-                        "name": "field",
-                        "type": "String",
-                        "info": "Single field"
-                    },
-                    "info": "Fields to retrieve; * to return all fields",
-                    "required": false
-                }
-            ],
+                }],
             "vendorRequest": {
                 "url": "{$data['requestUrl']}\/games\/{$data['gameIds']}",
                 "method": "get",
@@ -1224,19 +1140,7 @@
                     "vendorSchema": {
                         "format": "toString:{,}"
                     }
-                },
-                {
-                    "name": "fields",
-                    "type": "List",
-                    "structure": {
-                        "name": "field",
-                        "type": "String",
-                        "info": "Single field"
-                    },
-                    "info": "Fields to retrieve; * to return all fields",
-                    "required": false
-                }
-            ],
+                }],
             "vendorRequest": {
                 "url": "{$data['requestUrl']}\/game_engines\/{$data['gameEngineIds']}",
                 "method": "get",
@@ -1379,19 +1283,7 @@
                     "vendorSchema": {
                         "format": "toString:{,}"
                     }
-                },
-                {
-                    "name": "fields",
-                    "type": "List",
-                    "structure": {
-                        "name": "field",
-                        "type": "String",
-                        "info": "Single field"
-                    },
-                    "info": "Fields to retrieve; * to return all fields",
-                    "required": false
-                }
-            ],
+                }],
             "vendorRequest": {
                 "url": "{$data['requestUrl']}\/game_mode\/{$data['gameModeIds']}",
                 "method": "get",
@@ -1534,19 +1426,7 @@
                     "vendorSchema": {
                         "format": "toString:{,}"
                     }
-                },
-                {
-                    "name": "fields",
-                    "type": "List",
-                    "structure": {
-                        "name": "field",
-                        "type": "String",
-                        "info": "Single field"
-                    },
-                    "info": "Fields to retrieve; * to return all fields",
-                    "required": false
-                }
-            ],
+                }],
             "vendorRequest": {
                 "url": "{$data['requestUrl']}\/genres\/{$data['genreIds']}",
                 "method": "get",
@@ -1689,19 +1569,7 @@
                     "vendorSchema": {
                         "format": "toString:{,}"
                     }
-                },
-                {
-                    "name": "fields",
-                    "type": "List",
-                    "structure": {
-                        "name": "field",
-                        "type": "String",
-                        "info": "Single field"
-                    },
-                    "info": "Fields to retrieve; * to return all fields",
-                    "required": false
-                }
-            ],
+                }],
             "vendorRequest": {
                 "url": "{$data['requestUrl']}\/keywords\/{$data['keywordIds']}",
                 "method": "get",
@@ -1844,19 +1712,7 @@
                     "vendorSchema": {
                         "format": "toString:{,}"
                     }
-                },
-                {
-                    "name": "fields",
-                    "type": "List",
-                    "structure": {
-                        "name": "field",
-                        "type": "String",
-                        "info": "Single field"
-                    },
-                    "info": "Fields to retrieve; * to return all fields",
-                    "required": false
-                }
-            ],
+                }],
             "vendorRequest": {
                 "url": "{$data['requestUrl']}\/pages\/{$data['pageIds']}",
                 "method": "get",
@@ -1999,19 +1855,7 @@
                     "vendorSchema": {
                         "format": "toString:{,}"
                     }
-                },
-                {
-                    "name": "fields",
-                    "type": "List",
-                    "structure": {
-                        "name": "field",
-                        "type": "String",
-                        "info": "Single field"
-                    },
-                    "info": "Fields to retrieve; * to return all fields",
-                    "required": false
-                }
-            ],
+                }],
             "vendorRequest": {
                 "url": "{$data['requestUrl']}\/people\/{$data['personIds']}",
                 "method": "get",
@@ -2154,19 +1998,7 @@
                     "vendorSchema": {
                         "format": "toString:{,}"
                     }
-                },
-                {
-                    "name": "fields",
-                    "type": "List",
-                    "structure": {
-                        "name": "field",
-                        "type": "String",
-                        "info": "Single field"
-                    },
-                    "info": "Fields to retrieve; * to return all fields",
-                    "required": false
-                }
-            ],
+                }],
             "vendorRequest": {
                 "url": "{$data['requestUrl']}\/platforms\/{$data['platformIds']}",
                 "method": "get",
@@ -2309,19 +2141,7 @@
                     "vendorSchema": {
                         "format": "toString:{,}"
                     }
-                },
-                {
-                    "name": "fields",
-                    "type": "List",
-                    "structure": {
-                        "name": "field",
-                        "type": "String",
-                        "info": "Single field"
-                    },
-                    "info": "Fields to retrieve; * to return all fields",
-                    "required": false
-                }
-            ],
+                }],
             "vendorRequest": {
                 "url": "{$data['requestUrl']}\/player_perspectives\/{$data['playerPerspectiveIds']}",
                 "method": "get",
@@ -2464,19 +2284,7 @@
                     "vendorSchema": {
                         "format": "toString:{,}"
                     }
-                },
-                {
-                    "name": "fields",
-                    "type": "List",
-                    "structure": {
-                        "name": "field",
-                        "type": "String",
-                        "info": "Single field"
-                    },
-                    "info": "Fields to retrieve; * to return all fields",
-                    "required": false
-                }
-            ],
+                }],
             "vendorRequest": {
                 "url": "{$data['requestUrl']}\/pulses\/{$data['pulseIds']}",
                 "method": "get",
@@ -2619,19 +2427,7 @@
                     "vendorSchema": {
                         "format": "toString:{,}"
                     }
-                },
-                {
-                    "name": "fields",
-                    "type": "List",
-                    "structure": {
-                        "name": "field",
-                        "type": "String",
-                        "info": "Single field"
-                    },
-                    "info": "Fields to retrieve; * to return all fields",
-                    "required": false
-                }
-            ],
+                }],
             "vendorRequest": {
                 "url": "{$data['requestUrl']}\/pulse_groups\/{$data['pulseGroupIds']}",
                 "method": "get",
@@ -2774,19 +2570,7 @@
                     "vendorSchema": {
                         "format": "toString:{,}"
                     }
-                },
-                {
-                    "name": "fields",
-                    "type": "List",
-                    "structure": {
-                        "name": "field",
-                        "type": "String",
-                        "info": "Single field"
-                    },
-                    "info": "Fields to retrieve; * to return all fields",
-                    "required": false
-                }
-            ],
+                }],
             "vendorRequest": {
                 "url": "{$data['requestUrl']}\/pulse_sources\/{$data['pulseSourceIds']}",
                 "method": "get",
@@ -2929,19 +2713,7 @@
                     "vendorSchema": {
                         "format": "toString:{,}"
                     }
-                },
-                {
-                    "name": "fields",
-                    "type": "List",
-                    "structure": {
-                        "name": "field",
-                        "type": "String",
-                        "info": "Single field"
-                    },
-                    "info": "Fields to retrieve; * to return all fields",
-                    "required": false
-                }
-            ],
+                }],
             "vendorRequest": {
                 "url": "{$data['requestUrl']}\/release_dates\/{$data['releaseDateIds']}",
                 "method": "get",
@@ -3084,19 +2856,7 @@
                     "vendorSchema": {
                         "format": "toString:{,}"
                     }
-                },
-                {
-                    "name": "fields",
-                    "type": "List",
-                    "structure": {
-                        "name": "field",
-                        "type": "String",
-                        "info": "Single field"
-                    },
-                    "info": "Fields to retrieve; * to return all fields",
-                    "required": false
-                }
-            ],
+                }],
             "vendorRequest": {
                 "url": "{$data['requestUrl']}\/reviews\/{$data['reviewIds']}",
                 "method": "get",
@@ -3239,19 +2999,7 @@
                     "vendorSchema": {
                         "format": "toString:{,}"
                     }
-                },
-                {
-                    "name": "fields",
-                    "type": "List",
-                    "structure": {
-                        "name": "field",
-                        "type": "String",
-                        "info": "Single field"
-                    },
-                    "info": "Fields to retrieve; * to return all fields",
-                    "required": false
-                }
-            ],
+                }],
             "vendorRequest": {
                 "url": "{$data['requestUrl']}\/themes\/{$data['themeIds']}",
                 "method": "get",
@@ -3394,19 +3142,7 @@
                     "vendorSchema": {
                         "format": "toString:{,}"
                     }
-                },
-                {
-                    "name": "fields",
-                    "type": "List",
-                    "structure": {
-                        "name": "field",
-                        "type": "String",
-                        "info": "Single field"
-                    },
-                    "info": "Fields to retrieve; * to return all fields",
-                    "required": false
-                }
-            ],
+                }],
             "vendorRequest": {
                 "url": "{$data['requestUrl']}\/titles\/{$data['titleIds']}",
                 "method": "get",
@@ -3549,19 +3285,7 @@
                     "vendorSchema": {
                         "format": "toString:{,}"
                     }
-                },
-                {
-                    "name": "fields",
-                    "type": "List",
-                    "structure": {
-                        "name": "field",
-                        "type": "String",
-                        "info": "Single field"
-                    },
-                    "info": "Fields to retrieve; * to return all fields",
-                    "required": false
-                }
-            ],
+                }],
             "vendorRequest": {
                 "url": "{$data['requestUrl']}\/game_versions\/{$data['gameVersionIds']}",
                 "method": "get",

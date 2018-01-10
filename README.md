@@ -43,7 +43,6 @@ Get characters information
 | requestUrl  | credentials| Your request url
 | userKey     | credentials| Your user key
 | characterIds| List       | Id of the character
-| fields      | List       | Fields to retrieve; * to return all fields
 
 ## GameDatabase.listCollections
 Get list of collections
@@ -66,7 +65,6 @@ Get collections information
 | requestUrl   | credentials| Your request url
 | userKey      | credentials| Your user key
 | collectionIds| List       | Id of the collection
-| fields       | List       | Fields to retrieve; * to return all fields
 
 ## GameDatabase.listCompanies
 Get list of companies
@@ -89,7 +87,6 @@ Get companies information
 | requestUrl| credentials| Your request url
 | userKey   | credentials| Your user key
 | companyIds| List       | Id of the companies
-| fields    | List       | Fields to retrieve; * to return all fields
 
 ## GameDatabase.listCredits
 Get list of employees responsible for working on the game.
@@ -112,7 +109,6 @@ Get employees responsible for working on the game.
 | requestUrl| credentials| Your request url
 | userKey   | credentials| Your user key
 | creditsIds| List       | Id of the credit
-| fields    | List       | Fields to retrieve; * to return all fields
 
 ## GameDatabase.listFeeds
 Get list of social feed of status updates, media and news articles.
@@ -135,7 +131,6 @@ Get social feed of status updates, media and news articles.
 | requestUrl| credentials| Your request url
 | userKey   | credentials| Your user key
 | feedIds   | List       | Id of the feed
-| fields    | List       | Fields to retrieve; * to return all fields
 
 ## GameDatabase.listFranchises
 Get list video game franchises such as Star Wars.
@@ -158,7 +153,6 @@ Get video game franchises such as Star Wars.
 | requestUrl  | credentials| Your request url
 | userKey     | credentials| Your user key
 | franchiseIds| List       | Id of the franchise
-| fields      | List       | Fields to retrieve; * to return all fields
 
 ## GameDatabase.listGames
 Get list of Video Games!
@@ -181,7 +175,6 @@ Get Video Games!
 | requestUrl| credentials| Your request url
 | userKey   | credentials| Your user key
 | gameIds   | List       | Id of the game
-| fields    | List       | Fields to retrieve; * to return all fields
 
 ## GameDatabase.listGameEngines
 Get list of game engines such as unreal engine.
@@ -204,7 +197,6 @@ Get game engines such as unreal engine.
 | requestUrl   | credentials| Your request url
 | userKey      | credentials| Your user key
 | gameEngineIds| List       | Id of the game engine
-| fields       | List       | Fields to retrieve; * to return all fields
 
 ## GameDatabase.listGameModes
 Get list of game modes
@@ -227,7 +219,6 @@ Get game modes
 | requestUrl | credentials| Your request url
 | userKey    | credentials| Your user key
 | gameModeIds| List       | Id of the game mode
-| fields     | List       | Fields to retrieve; * to return all fields
 
 ## GameDatabase.listGenres
 Get list of game genres
@@ -250,7 +241,6 @@ Get game genres
 | requestUrl| credentials| Your request url
 | userKey   | credentials| Your user key
 | genreIds  | List       | Id of the genre
-| fields    | List       | Fields to retrieve; * to return all fields
 
 ## GameDatabase.listKeywords
 Get list of words or phrases that get tagged to a game such as “world war 2” or “steampunk”.
@@ -273,7 +263,6 @@ Get words or phrases that get tagged to a game such as “world war 2” or “s
 | requestUrl| credentials| Your request url
 | userKey   | credentials| Your user key
 | keywordIds| List       | Id of the keyword
-| fields    | List       | Fields to retrieve; * to return all fields
 
 ## GameDatabase.listPages
 Get list of multipurpose pages currently used for youtubers and media organisations.
@@ -296,7 +285,6 @@ Get pages currently used for youtubers and media organisations.
 | requestUrl| credentials| Your request url
 | userKey   | credentials| Your user key
 | pageIds   | List       | Id of the page
-| fields    | List       | Fields to retrieve; * to return all fields
 
 ## GameDatabase.listPersons
 Get list of individuals who are in the video games industry
@@ -319,7 +307,6 @@ Get individuals who are in the video games industry
 | requestUrl| credentials| Your request url
 | userKey   | credentials| Your user key
 | personIds | List       | Id of the person
-| fields    | List       | Fields to retrieve; * to return all fields
 
 ## GameDatabase.listPlatforms
 Get list of hardware used to run the game or game delivery network
@@ -342,7 +329,6 @@ Get hardware used to run the game or game delivery network
 | requestUrl | credentials| Your request url
 | userKey    | credentials| Your user key
 | platformIds| List       | Id of the platform
-| fields     | List       | Fields to retrieve; * to return all fields
 
 ## GameDatabase.listPlayerPerspective
 Get list player perspectives
@@ -365,7 +351,6 @@ Get player perspectives
 | requestUrl          | credentials| Your request url
 | userKey             | credentials| Your user key
 | playerPerspectiveIds| List       | Id of the player perspective
-| fields              | List       | Fields to retrieve; * to return all fields
 
 ## GameDatabase.listPulses
 Get list of news article.
@@ -388,7 +373,6 @@ Get news article.
 | requestUrl| credentials| Your request url
 | userKey   | credentials| Your user key
 | pulseIds  | List       | Id of the pulses
-| fields    | List       | Fields to retrieve; * to return all fields
 
 ## GameDatabase.listPulseGroups
 Get list of news article groups.
@@ -411,7 +395,6 @@ Get news article groups.
 | requestUrl   | credentials| Your request url
 | userKey      | credentials| Your user key
 | pulseGroupIds| List       | Id of the pulse groups
-| fields       | List       | Fields to retrieve; * to return all fields
 
 ## GameDatabase.listPulseSources
 Get list of news article source such as IGN.
@@ -434,7 +417,6 @@ Get news article source such as IGN.
 | requestUrl    | credentials| Your request url
 | userKey       | credentials| Your user key
 | pulseSourceIds| List       | Id of the pulse sources
-| fields        | List       | Fields to retrieve; * to return all fields
 
 ## GameDatabase.listReleaseDates
 Get list of release dates, platforms and versions.
@@ -457,7 +439,6 @@ Get release dates, platforms and versions.
 | requestUrl    | credentials| Your request url
 | userKey       | credentials| Your user key
 | releaseDateIds| List       | Id of the release dates
-| fields        | List       | Fields to retrieve; * to return all fields
 
 ## GameDatabase.listReviews
 Get list of reviews
@@ -480,7 +461,6 @@ Get reviews
 | requestUrl| credentials| Your request url
 | userKey   | credentials| Your user key
 | reviewIds | List       | Id of the review
-| fields    | List       | Fields to retrieve; * to return all fields
 
 ## GameDatabase.listThemes
 Get list of themes
@@ -503,7 +483,6 @@ Get themes
 | requestUrl| credentials| Your request url
 | userKey   | credentials| Your user key
 | themeIds  | List       | Id of the themes
-| fields    | List       | Fields to retrieve; * to return all fields
 
 ## GameDatabase.listTitles
 Get list of job titles in the industry.
@@ -526,7 +505,6 @@ Get job titles in the industry.
 | requestUrl| credentials| Your request url
 | userKey   | credentials| Your user key
 | titleIds  | List       | Id of the title
-| fields    | List       | Fields to retrieve; * to return all fields
 
 ## GameDatabase.listGameVersions
 Get list of details about game editions and versions.
@@ -549,5 +527,4 @@ Get details about game editions and versions.
 | requestUrl    | credentials| Your request url
 | userKey       | credentials| Your user key
 | gameVersionIds| List       | Id of the game version
-| fields        | List       | Fields to retrieve; * to return all fields
 
