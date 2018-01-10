@@ -2,7 +2,7 @@
 
 # GameDatabase Package
 IGDB.com is a video game community website, intended for both game consumers and video game professionals alike.
-* Domain: [GameDatabase](http://igdb.github.io)
+* Domain: [GameDatabase](http://igdb.github.io/api)
 * Credentials: userKey, requestUrl
 
 ## How to get credentials: 
